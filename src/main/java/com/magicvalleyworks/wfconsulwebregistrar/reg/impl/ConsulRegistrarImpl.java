@@ -1,16 +1,16 @@
-package com.magicvalleyworks.wfwebconsulregistrar.reg.impl;
+package com.magicvalleyworks.wfconsulwebregistrar.reg.impl;
 
 import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.QueryParams;
 import com.ecwid.consul.v1.Response;
 import com.ecwid.consul.v1.agent.model.NewService;
 import com.ecwid.consul.v1.catalog.model.CatalogService;
-import com.magicvalleyworks.wfwebconsulregistrar.context.api.ConsulRegistrationContext;
-import com.magicvalleyworks.wfwebconsulregistrar.reg.api.ConsulRegistrar;
-import com.magicvalleyworks.wfwebconsulregistrar.regconf.api.AppServicesRegConfig;
-import com.magicvalleyworks.wfwebconsulregistrar.regconf.api.WebServiceRegConfig;
-import com.magicvalleyworks.wfwebconsulregistrar.regconf.api.WebServicesRegConfig;
-import com.magicvalleyworks.wfwebconsulregistrar.serversettings.api.CurrentServerNodeSettings;
+import com.magicvalleyworks.wfconsulwebregistrar.context.api.ConsulRegistrationContext;
+import com.magicvalleyworks.wfconsulwebregistrar.reg.api.ConsulRegistrar;
+import com.magicvalleyworks.wfconsulwebregistrar.regconf.api.AppServicesRegConfig;
+import com.magicvalleyworks.wfconsulwebregistrar.regconf.api.WebServiceRegConfig;
+import com.magicvalleyworks.wfconsulwebregistrar.regconf.api.WebServicesRegConfig;
+import com.magicvalleyworks.wfconsulwebregistrar.serversettings.api.CurrentServerNodeSettings;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

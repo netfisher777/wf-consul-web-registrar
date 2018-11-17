@@ -1,4 +1,4 @@
-package com.magicvalleyworks.wfwebconsulregistrar.context.api;
+package com.magicvalleyworks.wfconsulwebregistrar.context.api;
 
 public interface ConsulRegistrationContext {
     String getWebServicesConfigurationFileName();

@@ -1,7 +1,7 @@
-package com.magicvalleyworks.wfwebconsulregistrar.startup;
+package com.magicvalleyworks.wfconsulwebregistrar.startup;
 
-import com.magicvalleyworks.wfwebconsulregistrar.context.api.ConsulRegistrationContext;
-import com.magicvalleyworks.wfwebconsulregistrar.reg.api.ConsulRegistrar;
+import com.magicvalleyworks.wfconsulwebregistrar.context.api.ConsulRegistrationContext;
+import com.magicvalleyworks.wfconsulwebregistrar.reg.api.ConsulRegistrar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

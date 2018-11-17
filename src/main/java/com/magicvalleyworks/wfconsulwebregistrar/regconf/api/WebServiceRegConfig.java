@@ -1,4 +1,4 @@
-package com.magicvalleyworks.wfwebconsulregistrar.regconf.api;
+package com.magicvalleyworks.wfconsulwebregistrar.regconf.api;
 
 import java.util.List;
 

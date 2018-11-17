@@ -1,6 +1,6 @@
-package com.magicvalleyworks.wfwebconsulregistrar.serversettings.impl;
+package com.magicvalleyworks.wfconsulwebregistrar.serversettings.impl;
 
-import com.magicvalleyworks.wfwebconsulregistrar.serversettings.api.CurrentServerNodeSettings;
+import com.magicvalleyworks.wfconsulwebregistrar.serversettings.api.CurrentServerNodeSettings;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.management.MBeanServer;

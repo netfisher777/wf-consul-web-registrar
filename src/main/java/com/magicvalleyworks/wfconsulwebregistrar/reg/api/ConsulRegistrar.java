@@ -1,4 +1,4 @@
-package com.magicvalleyworks.wfwebconsulregistrar.reg.api;
+package com.magicvalleyworks.wfconsulwebregistrar.reg.api;
 
 public interface ConsulRegistrar {
     void registerWebServices();

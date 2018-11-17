@@ -1,6 +1,6 @@
-package com.magicvalleyworks.wfwebconsulregistrar.context.impl;
+package com.magicvalleyworks.wfconsulwebregistrar.context.impl;
 
-import com.magicvalleyworks.wfwebconsulregistrar.context.api.ConsulRegistrationContext;
+import com.magicvalleyworks.wfconsulwebregistrar.context.api.ConsulRegistrationContext;
 
 import javax.enterprise.context.ApplicationScoped;
 
