@@ -3,13 +3,13 @@ package com.magicvalleyworks.wfconsulwebregistrar.regconf.api;
 import java.util.List;
 
 public class WebServicesRegConfig {
-    private List<WebServiceRegConfig> webServiceRegConfigs;
+    private List<WebServiceRegConfig> webServiceRegistrationConfigurations;
 
-    public List<WebServiceRegConfig> getWebServiceRegConfigs() {
-        return webServiceRegConfigs;
+    public List<WebServiceRegConfig> getWebServiceRegistrationConfigurations() {
+        return webServiceRegistrationConfigurations;
     }
 
-    public void setWebServiceRegConfigs(List<WebServiceRegConfig> webServiceRegConfigs) {
-        this.webServiceRegConfigs = webServiceRegConfigs;
+    public void setWebServiceRegistrationConfigurations(List<WebServiceRegConfig> webServiceRegistrationConfigurations) {
+        this.webServiceRegistrationConfigurations = webServiceRegistrationConfigurations;
     }
 }

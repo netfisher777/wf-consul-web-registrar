@@ -57,7 +57,7 @@ public class ConsulRegistrarImpl implements ConsulRegistrar {
     @Override
     public void registerWebServices() {
         WebServicesRegConfig webServicesRegConfig = appServicesRegConfig.getWebServicesRegConfig();
-        List<WebServiceRegConfig> webServiceRegConfigs = webServicesRegConfig != null ? webServicesRegConfig.getWebServiceRegConfigs() : null;
+        List<WebServiceRegConfig> webServiceRegConfigs = webServicesRegConfig != null ? webServicesRegConfig.getWebServiceRegistrationConfigurations() : null;
         if (webServiceRegConfigs != null) {
             for (WebServiceRegConfig conf : webServiceRegConfigs) {
                 registerWebService(conf);
