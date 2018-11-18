@@ -14,8 +14,8 @@ import java.util.function.Consumer;
 public class ConsulRegistrarServletContextListener implements ServletContextListener {
     private static final Logger logger = LoggerFactory.getLogger(ConsulRegistrarServletContextListener.class);
     private static final String WS_REG_CONFIG_FILE_NAME_INIT_PARAM = "WEB_SERVICES_REGISTRATION_CONFIGURATION_FILE_NAME";
-    private static final String CONSUL_HOST_OVERRIDE_INIT_PARAM = "CONSUL_HOST_OVERRIDE";
-    private static final String CONSUL_PORT_OVERRIDE_INIT_PARAM = "CONSUL_PORT_OVERRIDE";
+    private static final String CONSUL_HOST_OVERRIDE_SYSTEM_PROPERTY = "consul.host.default.override";
+    private static final String CONSUL_PORT_OVERRIDE_SYSTEM_PROPERTY = "consul.port.default.override";
 
     @Inject
     private ConsulRegistrar consulRegistrar;
@@ -45,14 +45,15 @@ public class ConsulRegistrarServletContextListener implements ServletContextList
     // Must be called first in contextInitialized(). Assuming that all @PostConstruct methods will be lazy loaded
     private void setupConsulRegistrationContext(ServletContext servletContext) {
         setupFieldFromServletContextParams(servletContext, WS_REG_CONFIG_FILE_NAME_INIT_PARAM, consulRegistrationContext::setWebServicesConfigurationFileName);
-        setupFieldFromServletContextParams(servletContext, CONSUL_HOST_OVERRIDE_INIT_PARAM, consulRegistrationContext::setConsulHostOverride);
-        setupFieldFromServletContextParams(servletContext, CONSUL_PORT_OVERRIDE_INIT_PARAM, consulRegistrationContext::setConsulPortOverride);
+        setupFieldFromSystemProperties(CONSUL_HOST_OVERRIDE_SYSTEM_PROPERTY, consulRegistrationContext::setConsulHostOverride);
+        setupFieldFromSystemProperties(CONSUL_PORT_OVERRIDE_SYSTEM_PROPERTY, consulRegistrationContext::setConsulPortOverride);
         String contextPath = servletContext.getContextPath();
         if (contextPath != null) {
             logger.info(String.format("Was found context path for the application in ServletContext = %s", contextPath));
             consulRegistrationContext.setWebApplicationContextPath(contextPath);
         } else {
             logger.warn("Was not found context path for the application in ServletContext");
+            throw new IllegalStateException();
         }
 
     }
@@ -64,6 +65,16 @@ public class ConsulRegistrarServletContextListener implements ServletContextList
             stringConsumer.accept(value);
         } else {
             logger.warn(String.format("Was not found %s parameter in servlet context. Just ignore this if this is ok", initParam));
+        }
+    }
+
+    private void setupFieldFromSystemProperties(String propertyName, Consumer<String> stringConsumer)  {
+        String value = System.getProperty(propertyName);
+        if (value != null) {
+            logger.info(String.format("Was found %s property in system properties with value = %s", propertyName, value));
+            stringConsumer.accept(value);
+        } else {
+            logger.warn(String.format("Was not found %s property in system properties. Just ignore this message if you have not configured it", propertyName));
         }
     }
 }
