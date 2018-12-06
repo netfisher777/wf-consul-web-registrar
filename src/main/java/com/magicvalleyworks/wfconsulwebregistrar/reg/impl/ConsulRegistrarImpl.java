@@ -29,6 +29,7 @@ public class ConsulRegistrarImpl implements ConsulRegistrar {
     private static final String CONSUL_AGENT_HOST_DEFAULT = "localhost";
     private static final Integer CONSUL_AGENT_PORT_DEFAULT = 8500;
     private static final String WEB_SERVICE_PATH_META_KEY = "path";
+    private static final String WEB_SERVICE_REG_TIME_META_KEY = "registrationTime";
 
     private ConsulClient consulClient;
     private static final Logger logger = LoggerFactory.getLogger(ConsulRegistrarImpl.class);
@@ -152,6 +153,7 @@ public class ConsulRegistrarImpl implements ConsulRegistrar {
 
         Map<String, String> metaMap = new HashMap<>();
         metaMap.put(WEB_SERVICE_PATH_META_KEY, servicePath);
+        metaMap.put(WEB_SERVICE_REG_TIME_META_KEY, new Date().toString());
 
         service.setId(serviceId);
         service.setName(serviceName);
@@ -163,6 +165,7 @@ public class ConsulRegistrarImpl implements ConsulRegistrar {
         NewService.Check check = new NewService.Check();
         check.setHttp(String.format("http://%s:%s/%s", serviceHost, servicePort, httpHealthCheckPath));
         check.setInterval("30s");
+        check.setDeregisterCriticalServiceAfter("60m");
         service.setCheck(check);
 
         return service;
